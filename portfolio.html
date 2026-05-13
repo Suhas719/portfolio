@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suhas C — Product & Visual Designer</title>
+<meta name="description" content="I create cohesive visual identities and digital experiences that scale brands through design, motion, and video." />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c0b;
+    --bg2: #141413;
+    --bg3: #1a1a18;
+    --fg: #eeebe2;
+    --muted: #6b6b66;
+    --muted2: #9a9990;
+    --accent: #c8f060;
+    --accent2: #a8d840;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(12,12,11,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--fg); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #0c0c0b;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.25rem;
+    transition: opacity 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 73px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    padding: 5rem 3rem 4rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 2.5rem;
+  }
+
+  .role-line {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--muted2);
+    margin-bottom: 3rem;
+    min-height: 1.2em;
+  }
+  .typed-text { color: var(--fg); }
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.8em;
+    background: var(--accent);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0c0c0b;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    display: inline-block;
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    border: 1px solid var(--border2);
+    display: inline-block;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { color: var(--fg); border-color: rgba(255,255,255,0.3); }
+
+  /* hero stats */
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+  /* hero right – case grid */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .case-card {
+    background: var(--bg);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 200px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .case-card:hover { background: var(--bg3); }
+  .case-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: flex-end;
+    min-height: 140px;
+    gap: 1.5rem;
+    background: var(--bg2);
+  }
+  .case-card.featured:hover { background: var(--bg3); }
+
+  .case-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .case-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.15;
+  }
+  .case-card.featured .case-title { font-size: 2rem; flex: 1; }
+
+  .case-desc {
+    font-size: 0.68rem;
+    color: var(--muted2);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  .feat-badge {
+    background: var(--accent);
+    color: #0c0c0b;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    white-space: nowrap;
+  }
+  .case-arrow { color: var(--accent); font-size: 1rem; align-self: flex-end; flex-shrink: 0; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    margin: 0;
+  }
+  .section-divider span {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SKILLS MARQUEE ── */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 0;
+    margin: 4rem 0;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: scroll 28s linear infinite;
+  }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .marquee-item::after {
+    content: '·';
+    color: var(--accent);
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before { content: ''; width: 20px; height: 1px; background: var(--muted); }
+
+  .about-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+  .about-section h2 em { font-style: italic; color: var(--accent); }
+
+  .about-body p {
+    font-size: 0.85rem;
+    color: var(--muted2);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border2);
+    color: var(--muted2);
+  }
+
+  .about-fun {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .fun-item {
+    background: var(--bg);
+    padding: 1.25rem 1.5rem;
+    font-size: 0.7rem;
+    color: var(--muted2);
+  }
+  .fun-item strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--fg);
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .testimonials-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+  .testimonials-section h2 em { font-style: italic; color: var(--accent); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .testi-card {
+    background: var(--bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .testi-quote {
+    font-size: 0.78rem;
+    color: var(--muted2);
+    line-height: 1.8;
+    flex: 1;
+  }
+  .testi-quote::before { content: '"'; color: var(--accent); font-size: 1.5rem; line-height: 0; vertical-align: -0.25em; margin-right: 0.25rem; }
+  .testi-author { font-size: 0.65rem; }
+  .testi-name { color: var(--fg); font-weight: 400; margin-bottom: 0.2rem; }
+  .testi-role { color: var(--muted); }
+  .testi-stat {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .contact-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+  .contact-section h2 em { font-style: italic; color: var(--accent); }
+
+  .contact-section p {
+    font-size: 0.8rem;
+    color: var(--muted2);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    border: 1px solid var(--border2);
+    padding: 0.65rem 1.25rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { color: var(--fg); border-color: rgba(255,255,255,0.3); }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .contact-row {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .contact-row-value { font-size: 0.82rem; color: var(--fg); }
+  .contact-row-value a:hover { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a:hover { color: var(--fg); }
+
+  /* ── ANIMATE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">Suhas C</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://forms.gle/cv4zHqrGF3VQnbT16" target="_blank">Get started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="work">
+  <div class="hero-left fade-in">
+    <p class="hero-eyebrow">Based in Bengaluru, India</p>
+    <h1>Product &amp; Visual</h1>
+    <h1>Designer <em>startups</em></h1>
+    <p class="hero-sub">can count on.</p>
+    <div class="role-line">
+      <span>Currently —&nbsp;</span>
+      <span class="typed-text" id="typed"></span>
+      <span class="cursor"></span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#work">View work</a>
+      <a class="btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">25<span>+</span></div>
+        <div class="stat-label">Projects completed</div>
+      </div>
+      <div>
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Satisfied Clients</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-grid fade-in" style="transition-delay:0.15s">
+    <a class="case-card featured" href="https://suhasc.framer.website/works/xplorionai" target="_blank">
+      <div>
+        <p class="case-tag">Lead case study · AI · Product Design</p>
+        <p class="case-title">XplorianAI</p>
+        <p class="case-desc" style="max-width:34ch;">Turning an AI-generated itinerary into something a traveller actually wants to use.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.6rem;flex-shrink:0;">
+        <span class="feat-badge">Featured</span>
+        <span class="case-arrow">↗</span>
+      </div>
+    </a>
+    <a class="case-card" href="https://suhasc.framer.website/works/mesha" target="_blank">
+      <div>
+        <p class="case-tag">IoT Dashboard</p>
+        <p class="case-title">Mesha Energy</p>
+        <p class="case-desc">Designing for people who didn't sign up to learn software.</p>
+      </div>
+      <span class="case-arrow">↗</span>
+    </a>
+    <a class="case-card" href="https://suhasc.framer.website/works/stepbygha" target="_blank">
+      <div>
+        <p class="case-tag">EdTech · Product Design</p>
+        <p class="case-title">Step by GHA</p>
+        <p class="case-desc">EdTech app for NEET PG &amp; FMGE students.</p>
+      </div>
+      <span class="case-arrow">↗</span>
+    </a>
+    <a class="case-card" href="https://suhasc.framer.website/works/scaleup" target="_blank" style="grid-column:span 2;flex-direction:row;align-items:flex-end;">
+      <div>
+        <p class="case-tag">Event · Web · Motion</p>
+        <p class="case-title">Scale UP Health 2025</p>
+        <p class="case-desc">Full event experience — app, web, print &amp; motion — in two months.</p>
+      </div>
+      <span class="case-arrow" style="flex-shrink:0;">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="fade-in">
+    <p class="section-label">Behind the canvas</p>
+    <h2>Design that <em>actually</em><br>ships.</h2>
+    <div class="about-tags">
+      <span class="tag">Product Design</span>
+      <span class="tag">UI / UX</span>
+      <span class="tag">Visual Design</span>
+      <span class="tag">Branding</span>
+      <span class="tag">Motion</span>
+      <span class="tag">Design Systems</span>
+      <span class="tag">Front-end</span>
+    </div>
+    <div class="about-fun">
+      <div class="fun-item"><strong>📷 Photography</strong>Random roads, stranger light</div>
+      <div class="fun-item"><strong>🐈 Cat person</strong>Confirmed</div>
+      <div class="fun-item"><strong>🥾 Hiking</strong>Trails &amp; elevation</div>
+      <div class="fun-item"><strong>💻 Coding</strong>Learning front-end</div>
+    </div>
+  </div>
+
+  <div class="about-body fade-in" style="transition-delay:0.1s">
+    <p>I'm a designer with 5 years of experience, mostly working with startups — helping them go from a rough idea to something that actually ships. I've worked on apps, dashboards, EdTech platforms, branding, the whole mix.</p>
+    <p>I care more about whether something works than whether it looks good. That means I ask a lot of questions upfront, move fast, and don't drag projects into endless revision cycles.</p>
+    <p>I'm currently expanding into design engineering — writing the HTML, CSS, and JavaScript behind the things I design. Because if you can both design and build, you can work faster, communicate better, and ship products that don't lose something in translation.</p>
+    <p>When I'm not designing, I'm out taking random photos or finding roads nobody else seems to bother with.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section fade-in">
+  <p class="section-label">Kind words</p>
+  <h2>What <em>clients</em> say</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <!-- <div class="testi-stat">30%</div> -->
+      <p class="testi-quote">The motion assets and promotional video edits for our latest campaign were high-impact and cinematic. We saw a 30% increase in social engagement almost immediately. If you need visual storytelling that converts, look no further.</p>
+      <div class="testi-author">
+        <div class="testi-name">Sujan Sarathi</div>
+        <div class="testi-role">Founder, MastersWork</div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <!-- <div class="testi-stat">↑↑</div> -->
+      <p class="testi-quote">The transition from initial concept to a fully functional, high-quality web and app UI was handled with extreme professionalism. The design system is cohesive, modern, and perfectly captures our identity.</p>
+      <div class="testi-author">
+        <div class="testi-name">Ram Iyengar</div>
+        <div class="testi-role">CEO, Third Eye Creatives</div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <!-- <div class="testi-stat">∞</div> -->
+      <p class="testi-quote">Having a single creative partner who handles everything from our website UI to social media motion graphics has been invaluable. Consistently high-quality and perfectly aligned with our brand's vision.</p>
+      <div class="testi-author">
+        <div class="testi-name">Ryan Duffy</div>
+        <div class="testi-role">Enterprise Sales, Akto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="fade-in">
+    <h2>Ready to build<br>something <em>great?</em></h2>
+    <p>I'm open to freelance projects, contract roles, and full-time opportunities — especially product design or design engineering positions.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.linkedin.com/in/suhas-c-13bb6713a/" target="_blank">LinkedIn ↗</a>
+      <a class="contact-link" href="https://forms.gle/cv4zHqrGF3VQnbT16" target="_blank">Start a project ↗</a>
+      <a class="contact-link" href="https://suhasc.framer.website/" target="_blank">Framer site ↗</a>
+    </div>
+  </div>
+
+  <div class="contact-details fade-in" style="transition-delay:0.1s">
+    <div class="contact-row">
+      <span class="contact-row-label">Email</span>
+      <span class="contact-row-value"><a href="mailto:suhasc0007@gmail.com">suhasc0007@gmail.com</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-row-label">Phone</span>
+      <span class="contact-row-value"><a href="tel:+918073889378">+91 80738 89378</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-row-label">Location</span>
+      <span class="contact-row-value">Bengaluru, India — open to remote</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-row-label">Availability</span>
+      <span class="contact-row-value" style="color:var(--accent);">● Available for new work</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Suhas C</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/suhas-c-13bb6713a/" target="_blank">LinkedIn</a>
+    <a href="https://suhasc.framer.website/" target="_blank">Framer</a>
+    <a href="mailto:suhasc0007@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+/* Typewriter */
+const roles = ['Product Designer', 'Design Engineer', 'Visual Designer', 'UI Developer', 'Freelancer'];
+let ri = 0, ci = 0, del = false;
+const el = document.getElementById('typed');
+function type() {
+  const w = roles[ri];
+  if (!del) {
+    el.textContent = w.slice(0, ++ci);
+    if (ci === w.length) { del = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = w.slice(0, --ci);
+    if (ci === 0) { del = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(type, del ? 38 : 75);
+}
+type();
+
+/* Marquee */
+const skills = ['Product Design','UI / UX','Visual Design','Branding','Motion Graphics','Design Systems','User Research','Front-end Dev','EdTech','IoT Dashboards','Social Media','Web Design'];
+const track = document.getElementById('marquee');
+const double = [...skills, ...skills];
+double.forEach(s => {
+  const d = document.createElement('div');
+  d.className = 'marquee-item';
+  d.textContent = s;
+  track.appendChild(d);
+});
+
+/* Scroll fade-in */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
